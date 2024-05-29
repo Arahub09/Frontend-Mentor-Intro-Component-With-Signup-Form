@@ -63,16 +63,11 @@ form.addEventListener("submit", (e) => {
     lastWarning.style.display = "none";
   }
 
-  // Rest of your validation logic...
-});
-
   // Check email
-
   if (!validateEmail(emailVal) || emailVal === '') {
     email.classList.add('error');
     errorTextEmail.innerHTML = "Looks like this is not an email";
     emailWarning.style.display = "block";
-
   } else {
     email.classList.remove('error');
     errorTextEmail.innerHTML = '';
@@ -80,18 +75,16 @@ form.addEventListener("submit", (e) => {
   }
 
   // Check password
-
   if (passwordVal === '') {
     password.classList.add('error');
     errorTextPass.innerHTML = "Password cannot be empty";
     revealPassword.src = "./images/exclamation-circle-solid.svg";
-
   } else {
     password.classList.remove('error');
     errorTextPass.innerHTML = '';
   }
-
 });
+
 
 //Validate email
 function validateEmail(email) {
