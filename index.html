@@ -33,7 +33,7 @@
 
           <div class="display-flex">
             <label for="firstName">
-              <input type="text" id="firstName" placeholder="First Name" />
+              <input type="text" id="firstName" placeholder="First Name" onkeydown="return /[a-zA-Z]/i.test(event.key)">
               <div class="warning-icon"><img id="first-warning" src="./images/exclamation-circle-solid.svg" alt=""></div>
             </label>
             <p class="error-text-first"></p>
@@ -42,7 +42,7 @@
 
           <div class="display-flex">
             <label for="lastName">
-              <input type="text" id="lastName" placeholder="Last Name" />
+              <input type="text" id="lastName" placeholder="Last Name" onkeydown="return /[a-zA-Z]/i.test(event.key)">
               <div class="warning-icon"><img id="last-warning" src="./images/exclamation-circle-solid.svg" alt=""></div>
             </label>
             <p class="error-text-last"></p>
@@ -51,7 +51,7 @@
 
           <div class="display-flex">
             <label for="email">
-              <input type="email" id="email" placeholder="Email" />
+              <input type="email" id="email" placeholder="Email">
               <div class="warning-icon"><img id="email-warning" src="./images/exclamation-circle-solid.svg" alt=""></div>
             </label>
             <p class="error-text-email"></p>
@@ -60,7 +60,7 @@
 
           <div class="display-flex">
             <label for="password">
-              <input type="password" id="password" placeholder="Password" />
+              <input type="password" id="password" placeholder="Password">
               <div class="warning-icon"><img id="reveal-password" src="./images/eye-slash-solid.svg" alt="eye icon"></div>
             </label>
             <p class="error-text-pass"></p>
