@@ -1,114 +1,95 @@
-
 const form = document.getElementById('form');
 const btn = document.getElementById('button');
 const firstName = document.querySelector('#firstName');
 const lastName = document.querySelector('#lastName');
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
-const errorTextFirst = document.querySelector(".error-text-first");
-const errorTextLast = document.querySelector(".error-text-last");
-const errorTextEmail = document.querySelector(".error-text-email");
-const errorTextPass = document.querySelector(".error-text-pass");
-const firstWarning = document.querySelector("#first-warning");
-const lastWarning = document.querySelector("#last-warning");
-const emailWarning = document.querySelector("#email-warning");
-const revealPassword = document.querySelector("#reveal-password");
-
+const errorTextFirst = document.querySelector('.error-text-first');
+const errorTextLast = document.querySelector('.error-text-last');
+const errorTextEmail = document.querySelector('.error-text-email');
+const errorTextPass = document.querySelector('.error-text-pass');
+const firstWarning = document.querySelector('#first-warning');
+const lastWarning = document.querySelector('#last-warning');
+const emailWarning = document.querySelector('#email-warning');
+const revealPassword = document.querySelector('#reveal-password');
 
 console.log(firstName);
 
-// console.log(firstName, lastName, email, password);
-
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const fName = firstName.value;
   const lName = lastName.value;
   const emailVal = email.value;
   const passwordVal = password.value;
 
-  // Regular expression to check if the input contains only letters
   const onlyLettersRegex = /^[A-Za-z]+$/;
 
   // Check first name
-  if (fName === "") {
-    // Handle empty first name
-    firstName.classList.add("error");
-    errorTextFirst.innerHTML = "First Name cannot be empty";
-    firstWarning.style.display = "block";
+  if (fName === '') {
+    firstName.classList.add('error');
+    errorTextFirst.innerHTML = 'First Name cannot be empty';
+    firstWarning.style.display = 'block';
   } else if (!onlyLettersRegex.test(fName)) {
-    // Check if first name contains only letters
-    firstName.classList.add("error");
-    errorTextFirst.innerHTML = "First Name can only contain letters";
-    firstWarning.style.display = "block";
+    firstName.classList.add('error');
+    errorTextFirst.innerHTML = 'First Name can only contain letters';
+    firstWarning.style.display = 'block';
   } else {
-    firstName.classList.remove("error");
-    errorTextFirst.innerHTML = "";
-    firstWarning.style.display = "none";
+    firstName.classList.remove('error');
+    errorTextFirst.innerHTML = '';
+    firstWarning.style.display = 'none';
   }
 
   // Check last name
-  if (lName === "") {
-    // Handle empty last name
-    lastName.classList.add("error");
-    errorTextLast.innerHTML = "Last Name cannot be empty";
-    lastWarning.style.display = "block";
+  if (lName === '') {
+    lastName.classList.add('error');
+    errorTextLast.innerHTML = 'Last Name cannot be empty';
+    lastWarning.style.display = 'block';
   } else if (!onlyLettersRegex.test(lName)) {
-    // Check if last name contains only letters
-    lastName.classList.add("error");
-    errorTextLast.innerHTML = "Last Name can only contain letters";
-    lastWarning.style.display = "block";
+    lastName.classList.add('error');
+    errorTextLast.innerHTML = 'Last Name can only contain letters';
+    lastWarning.style.display = 'block';
   } else {
-    lastName.classList.remove("error");
-    errorTextLast.innerHTML = "";
-    lastWarning.style.display = "none";
+    lastName.classList.remove('error');
+    errorTextLast.innerHTML = '';
+    lastWarning.style.display = 'none';
   }
 
   // Check email
   if (!validateEmail(emailVal) || emailVal === '') {
     email.classList.add('error');
-    errorTextEmail.innerHTML = "Looks like this is not an email";
-    emailWarning.style.display = "block";
+    errorTextEmail.innerHTML = 'Looks like this is not an email';
+    emailWarning.style.display = 'block';
   } else {
     email.classList.remove('error');
     errorTextEmail.innerHTML = '';
-    emailWarning.style.display = "none";
+    emailWarning.style.display = 'none';
   }
 
-// Check password
-if (passwordVal === '') {
-  // Handle empty password
-  password.classList.add('error');
-  errorTextPass.innerHTML = "Password cannot be empty";
-  revealPassword.src = "./images/exclamation-circle-solid.svg";
-} else {
-  // Remove error indication only if password is visible
-  if (password.type === 'text') {
-    password.classList.remove('error');
-    errorTextPass.innerHTML = '';
+  // Check password
+  if (passwordVal === '') {
+    password.classList.add('error');
+    errorTextPass.innerHTML = 'Password cannot be empty';
+    revealPassword.src = './images/exclamation-circle-solid.svg';
+  } else {
+    if (password.type === 'text') {
+      password.classList.remove('error');
+      errorTextPass.innerHTML = '';
+    }
   }
-}
-
-// Rest of your validation logic...
-
-
+});
 
 //Validate email
 function validateEmail(email) {
-  var re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
-
-
-revealPassword.addEventListener('click', () =>{
-  if(password.type === 'password'){
+revealPassword.addEventListener('click', () => {
+  if (password.type === 'password') {
     password.type = 'text';
-    revealPassword.src = "./images/eye-solid.svg";
-  }else{
+    revealPassword.src = './images/eye-solid.svg';
+  } else {
     password.type = 'password';
-    revealPassword.src = "./images/eye-slash-solid.svg";
+    revealPassword.src = './images/eye-slash-solid.svg';
   }
-})
-
-
+});
