@@ -19,37 +19,53 @@ console.log(firstName);
 
 // console.log(firstName, lastName, email, password);
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   const fName = firstName.value;
   const lName = lastName.value;
   const emailVal = email.value;
   const passwordVal = password.value;
-  console.log(fName, lName, emailVal, passwordVal);
+
+  // Regular expression to check if the input contains only letters
+  const onlyLettersRegex = /^[A-Za-z]+$/;
 
   // Check first name
-  if (fName === '') {
-    firstName.classList.add('error');
+  if (fName === "") {
+    // Handle empty first name
+    firstName.classList.add("error");
     errorTextFirst.innerHTML = "First Name cannot be empty";
     firstWarning.style.display = "block";
-  
+  } else if (!onlyLettersRegex.test(fName)) {
+    // Check if first name contains only letters
+    firstName.classList.add("error");
+    errorTextFirst.innerHTML = "First Name can only contain letters";
+    firstWarning.style.display = "block";
   } else {
-    firstName.classList.remove('error');
-    errorTextFirst.innerHTML = '';
-    firstWarning.style.display = "none"
+    firstName.classList.remove("error");
+    errorTextFirst.innerHTML = "";
+    firstWarning.style.display = "none";
   }
-  // Check last name
 
-  if (lName === '') {
-    lastName.classList.add('error');
+  // Check last name
+  if (lName === "") {
+    // Handle empty last name
+    lastName.classList.add("error");
     errorTextLast.innerHTML = "Last Name cannot be empty";
     lastWarning.style.display = "block";
-
+  } else if (!onlyLettersRegex.test(lName)) {
+    // Check if last name contains only letters
+    lastName.classList.add("error");
+    errorTextLast.innerHTML = "Last Name can only contain letters";
+    lastWarning.style.display = "block";
   } else {
-    lastName.classList.remove('error');
-    errorTextLast.innerHTML = '';
+    lastName.classList.remove("error");
+    errorTextLast.innerHTML = "";
     lastWarning.style.display = "none";
   }
+
+  // Rest of your validation logic...
+});
+
   // Check email
 
   if (!validateEmail(emailVal) || emailVal === '') {
