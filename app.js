@@ -75,14 +75,16 @@ form.addEventListener("submit", (e) => {
   }
 
   // Check password
-  if (passwordVal === '') {
-    password.classList.add('error');
-    errorTextPass.innerHTML = "Password cannot be empty";
-    revealPassword.src = "./images/exclamation-circle-solid.svg";
-  } else {
+if (passwordVal === '') {
+  // Handle empty password
+  password.classList.add('error');
+  errorTextPass.innerHTML = "Password cannot be empty";
+  revealPassword.src = "./images/exclamation-circle-solid.svg";
+} else {
+  // Remove error indication only if password is visible
+  if (password.type === 'text') {
     password.classList.remove('error');
     errorTextPass.innerHTML = '';
-  }
   
   // Rest of your validation logic...
 });
