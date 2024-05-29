@@ -83,6 +83,8 @@ form.addEventListener("submit", (e) => {
     password.classList.remove('error');
     errorTextPass.innerHTML = '';
   }
+  
+  // Rest of your validation logic...
 });
 
 
