@@ -1,23 +1,3 @@
-const form = document.getElementById('form');
-const btn = document.getElementById('button');
-const firstName = document.querySelector('#firstName');
-const lastName = document.querySelector('#lastName');
-const email = document.querySelector('#email');
-const password = document.querySelector('#password');
-const errorTextFirst = document.querySelector(".error-text-first");
-const errorTextLast = document.querySelector(".error-text-last");
-const errorTextEmail = document.querySelector(".error-text-email");
-const errorTextPass = document.querySelector(".error-text-pass");
-const firstWarning = document.querySelector("#first-warning");
-const lastWarning = document.querySelector("#last-warning");
-const emailWarning = document.querySelector("#email-warning");
-const revealPassword = document.querySelector("#reveal-password");
-
-
-console.log(firstName);
-
-// console.log(firstName, lastName, email, password);
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const fName = firstName.value;
@@ -34,13 +14,9 @@ form.addEventListener('submit', (e) => {
   } else {
     firstName.classList.remove('error');
     errorTextFirst.innerHTML = '';
-    firstWarning.style.display = "none"
-  } else if (!/^[a-zA-Z]+$/.test(firstName.value)) {
-    position[0].textContent = "invalid input";
-    position[0].style.display = "inline";
-    img[0].style.display = "inline";
-    firstName.classList.add("error");
-  
+    firstWarning.style.display = "none";
+  }
+
   // Check last name
   if (lName === '') {
     lastName.classList.add('error');
@@ -50,26 +26,24 @@ form.addEventListener('submit', (e) => {
     lastName.classList.remove('error');
     errorTextLast.innerHTML = '';
     lastWarning.style.display = "none";
-  } else if (!/^[a-zA-Z]+$/.test(lastName.value)) {
-    position[1].textContent = "invalid input";
-    position[1].style.display = "inline";
-    img[1].style.display = "inline";
-    lastName.classList.add("error");
-    
+  }
+
   // Check email
-  if (!validateEmail(emailVal) || emailVal === '') {
+  if (emailVal === '') {
     email.classList.add('error');
-    errorTextEmail.innerHTML = "Looks like this is not an email";
+    errorTextEmail.innerHTML = "Email cannot be empty";
     emailWarning.style.display = "block";
-  } else {
-    email.classList.remove('error');
-    errorTextEmail.innerHTML = '';
-    emailWarning.style.display = "none";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+  } else if (!validateEmail(emailVal)) {
+    // Invalid email format
     position[2].textContent = "invalid email format";
     position[2].style.display = "inline";
     img[2].style.display = "inline";
     email.classList.add("error");
+  } else {
+    email.classList.remove('error');
+    errorTextEmail.innerHTML = '';
+    emailWarning.style.display = "none";
+  }
 
   // Check password
   if (passwordVal === '') {
@@ -79,38 +53,21 @@ form.addEventListener('submit', (e) => {
   } else {
     password.classList.remove('error');
     errorTextPass.innerHTML = '';
+    // Change the reveal password icon only if password is not empty
+    if (password.type === 'password') {
+      revealPassword.src = "./images/eye-solid.svg";
+    } else {
+      revealPassword.src = "./images/eye-slash-solid.svg";
+    }
   }
-
 });
 
-//Validate email
-function validateEmail(email) {
-  var re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-}
-
-
-
-revealPassword.addEventListener('click', () =>{
-  if(password.type === 'password'){
+revealPassword.addEventListener('click', () => {
+  if (password.type === 'password') {
     password.type = 'text';
     revealPassword.src = "./images/eye-solid.svg";
-  }else{
+  } else {
     password.type = 'password';
     revealPassword.src = "./images/eye-slash-solid.svg";
   }
-}
-
-
-/*
-revealPassword.onclick = () => {
-  if(password.type === 'password'){
-    password.type = 'text';
-    revealPassword.src = "./images/eye-solid.svg";
-  }
-  else{
-    password.type = 'password';
-    revealPassword.src ="./images/eye-slash-solid.svg";
-  }
-}  */
+});
