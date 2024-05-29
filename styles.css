@@ -142,7 +142,7 @@ button {
 button:focus{
    /* Inverts the colors */
   background: hsl(154, 54%, 28%);
-  color: black;
+  color: white;
   text-decoration: underline;
   outline: none;
 }
