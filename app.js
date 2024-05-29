@@ -112,14 +112,3 @@ revealPassword.addEventListener('click', () =>{
 })
 
 
-/*
-revealPassword.onclick = () => {
-  if(password.type === 'password'){
-    password.type = 'text';
-    revealPassword.src = "./images/eye-solid.svg";
-  }
-  else{
-    password.type = 'password';
-    revealPassword.src ="./images/eye-slash-solid.svg";
-  }
-}  */
