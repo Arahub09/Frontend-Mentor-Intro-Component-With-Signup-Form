@@ -87,7 +87,7 @@ if (passwordVal === '') {
     errorTextPass.innerHTML = '';
   
   // Rest of your validation logic...
-});
+}
 
 
 //Validate email
