@@ -141,8 +141,8 @@ button {
 }
 button:focus{
    /* Inverts the colors */
-  background: #FFFFFF;
-  color: #590CE5;
+  background: rgb(73, 141, 144);
+  color: black;
   text-decoration: underline;
   outline: none;
 }
