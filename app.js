@@ -74,7 +74,7 @@ form.addEventListener("submit", (e) => {
     emailWarning.style.display = "none";
   }
 
-  // Check password
+// Check password
 if (passwordVal === '') {
   // Handle empty password
   password.classList.add('error');
@@ -85,9 +85,11 @@ if (passwordVal === '') {
   if (password.type === 'text') {
     password.classList.remove('error');
     errorTextPass.innerHTML = '';
-  
-  // Rest of your validation logic...
+  }
 }
+
+// Rest of your validation logic...
+
 
 
 //Validate email
