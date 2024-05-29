@@ -31,44 +31,51 @@ form.addEventListener('submit', (e) => {
     firstName.classList.add('error');
     errorTextFirst.innerHTML = "First Name cannot be empty";
     firstWarning.style.display = "block";
-  
   } else {
     firstName.classList.remove('error');
     errorTextFirst.innerHTML = '';
     firstWarning.style.display = "none"
-  }
+  } else if (!/^[a-zA-Z]+$/.test(firstName.value)) {
+    position[0].textContent = "invalid input";
+    position[0].style.display = "inline";
+    img[0].style.display = "inline";
+    firstName.classList.add("error");
+  
   // Check last name
-
   if (lName === '') {
     lastName.classList.add('error');
     errorTextLast.innerHTML = "Last Name cannot be empty";
     lastWarning.style.display = "block";
-
   } else {
     lastName.classList.remove('error');
     errorTextLast.innerHTML = '';
     lastWarning.style.display = "none";
-  }
+  } else if (!/^[a-zA-Z]+$/.test(lastName.value)) {
+    position[1].textContent = "invalid input";
+    position[1].style.display = "inline";
+    img[1].style.display = "inline";
+    lastName.classList.add("error");
+    
   // Check email
-
   if (!validateEmail(emailVal) || emailVal === '') {
     email.classList.add('error');
     errorTextEmail.innerHTML = "Looks like this is not an email";
     emailWarning.style.display = "block";
-
   } else {
     email.classList.remove('error');
     errorTextEmail.innerHTML = '';
     emailWarning.style.display = "none";
-  }
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    position[2].textContent = "invalid email format";
+    position[2].style.display = "inline";
+    img[2].style.display = "inline";
+    email.classList.add("error");
 
   // Check password
-
   if (passwordVal === '') {
     password.classList.add('error');
     errorTextPass.innerHTML = "Password cannot be empty";
     revealPassword.src = "./images/exclamation-circle-solid.svg";
-
   } else {
     password.classList.remove('error');
     errorTextPass.innerHTML = '';
@@ -93,7 +100,7 @@ revealPassword.addEventListener('click', () =>{
     password.type = 'password';
     revealPassword.src = "./images/eye-slash-solid.svg";
   }
-})
+}
 
 
 /*
